@@ -10,15 +10,15 @@ import matplotlib.pylab as plt
 import math
 import json
 
-NUM_ROOMS = 10
+NUM_ROOMS = 30
 number_of_rooms = NUM_ROOMS
 
 SCALE_FACTOR = 1000
 
-ROOM_WIDTH_MIN = 20
-ROOM_WIDTH_MAX = 60
-ROOM_HEIGHT_MIN = 20 * SCALE_FACTOR
-ROOM_HEIGHT_MAX = 60 * SCALE_FACTOR
+ROOM_WIDTH_MIN = 10
+ROOM_WIDTH_MAX = 20
+ROOM_HEIGHT_MIN = 10 * SCALE_FACTOR
+ROOM_HEIGHT_MAX = 20 * SCALE_FACTOR
 
 CANVAS_WIDTH = 400
 CANVAS_HEIGHT = 400
@@ -105,7 +105,7 @@ def create_big_room_constraints(slv):
                 rooms[0]['y'] <= 0.25 * CANVAS_HEIGHT * SCALE_FACTOR))
 
     and_clause_count = and_clause_count + 4
-    or_clause_count = or_clause_count + 1
+    or_clause_count = or_clause_count + 0
 
     # Antechamber
     rooms[1]['width'] = int(0.4 * CANVAS_WIDTH)
@@ -136,13 +136,13 @@ def add_big_room_separation_constraint(slv, i, j):
         slv.add(And(rooms[i]['y'] == rooms[j]['y'] - rooms[i]['height'],
                     rooms[i]['x'] == rooms[j]['x']))
         and_clause_count = and_clause_count + 2
-        or_clause_count = or_clause_count + 1
+        or_clause_count = or_clause_count + 0
     # Have escape room touching top right of throne room
     if j == 2:
         slv.add(And(rooms[i]['x'] == rooms[j]['x'] - rooms[i]['width'],
                     rooms[i]['y'] == rooms[j]['y'] - 0.1 * rooms[i]['height']))
         and_clause_count = and_clause_count + 2
-        or_clause_count = or_clause_count + 1
+        or_clause_count = or_clause_count + 0
 
 def add_separation_constraint(slv, i, j):
     global and_clause_count, or_clause_count
@@ -170,8 +170,8 @@ def add_separation_constraint(slv, i, j):
     constraint = constraint[:-2]
     constraint += "\n)"
     slv.add(eval(constraint))
-    and_clause_count = and_clause_count + 4
-    or_clause_count = or_clause_count + 1
+    and_clause_count = and_clause_count + 1
+    or_clause_count = or_clause_count + 4
 
 
 def create_canvas_constraints(slv):
@@ -180,7 +180,7 @@ def create_canvas_constraints(slv):
         slv.add(rooms[i]['x'] >= 0, rooms[i]['x'] + rooms[i]['width'] <= CANVAS_WIDTH)
         slv.add(rooms[i]['y'] >= 0, rooms[i]['y'] + rooms[i]['height'] <= CANVAS_HEIGHT * SCALE_FACTOR)
         and_clause_count = and_clause_count + 4
-        or_clause_count = or_clause_count + 2
+        or_clause_count = or_clause_count + 0
 
 
 def create_line_constraints(slv):
@@ -252,12 +252,13 @@ def create_point_line_constraints(slv, lines):
                 constraint += "(rooms[i]['x'] >= " + str(low_x) + "),\n"
                 constraint += "(rooms[i]['x'] <= " + str(high_x) + "-" + str(rooms[i]['width']) + ")),\n"
 
+            and_clause_count = and_clause_count + 4
+            or_clause_count = or_clause_count + 1
+
         constraint = constraint[:-2]
         constraint += "\n)"
         print("Room: {}  Constraint: \n{}\n\n".format(i,constraint))
         slv.add(eval(constraint))
-        and_clause_count = and_clause_count + 4
-        or_clause_count = or_clause_count + 1
 
 
 def create_mousepoint_constraints(slv, mousepoints):
@@ -304,7 +305,7 @@ def create_quad_constraints(slv):
         if rooms[i]['quad'] == 4:
             slv.add(And(rooms[i]['x'] > CANVAS_WIDTH/2, rooms[i]['y'] >= CANVAS_HEIGHT/2))
         and_clause_count = and_clause_count + 2
-        or_clause_count = or_clause_count + 1
+        or_clause_count = or_clause_count + 0
 
 def init_all_constraints(slv, mousepoints=None):
     global line_constraints
@@ -802,6 +803,13 @@ def main():
             #print("Stat is: {}".format(stat))
             #for k, v in stat:
             #    print("{} : {}".format(k, v))
+            asrts = solver.assertions()
+            print("@@@ Assertions @@@")
+            i = 0
+            for asrt in asrts:
+                i = i + 1
+                #print("Assertion: {}".format(asrt))
+            print("Total assertions: {}".format(i))
             timing_info['solve_time'] = end-begin
             if s.r == Z3_L_TRUE:
                 #display_room_plus_model(solver.model())
