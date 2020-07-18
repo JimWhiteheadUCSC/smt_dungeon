@@ -1,0 +1,35 @@
+================
+create_canvas_constraints average: 0.020857823994010687
+create_canvas_constraints median: 0.020608749997336417
+create_canvas_constraints minimum: 0.015926400083117187
+create_canvas_constraints maximum: 0.0338931999867782
+================
+create_separation_constraints average: 0.40582564799813553
+create_separation_constraints median: 0.39896885002963245
+create_separation_constraints minimum: 0.35083300003316253
+create_separation_constraints maximum: 0.5568200999405235
+================
+create_control_line_constraints average: 0.19505210400326178
+create_control_line_constraints median: 0.19822924997424707
+create_control_line_constraints minimum: 0.13748809997923672
+create_control_line_constraints maximum: 0.26955399999860674
+================
+create_all_constraints average: 0.6217594899958931
+create_all_constraints median: 0.6203357999911532
+create_all_constraints minimum: 0.516213099937886
+create_all_constraints maximum: 0.851644100039266
+================
+solve_time average: 0.6546884308585897
+solve_time median: 0.49821924994466826
+solve_time minimum: 0.11008060001768172
+solve_time maximum: 4.053257399937138
+================
+delaunay_time average: 0.003889559739618562
+delaunay_time median: 0.003599550051148981
+delaunay_time minimum: 0.00283109990414232
+delaunay_time maximum: 0.015902600018307567
+================
+mst_time average: 0.0008783780996222049
+mst_time median: 0.0007789999945089221
+mst_time minimum: 0.0006516999565064907
+mst_time maximum: 0.009581200079992414
