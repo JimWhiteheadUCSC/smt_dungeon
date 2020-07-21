@@ -23,4 +23,12 @@ Follow directions for each package to install.
 
 `python3 dungeon-smt.py`
 
-This will cause a blank PyGame window to appear. Click inside the PyGame window so it receives keyboard events. Press `<space>` to begin dungeon execution. Statistics will be displayed to the console.
+This will cause a blank PyGame window to appear. Click inside the PyGame window so it receives keyboard events. Press `<space>` to begin dungeon execution. Statistics will be displayed to the console during execution. Press `<esc>` to exit. 
+
+**Control Lines**
+
+There are two ways to enter a control line.
+
+1. After starting the generator, _before_ pressing `<space>`, use the mouse to click in the PyGame window. The first point will be invisible, but thereafter each point will define a new control line, displayed in red. Be careful that the control line is long enough so that there is enough space along the line to place the dungeon rooms (and thereby allow the Z3 solver to find layout solutions).
+2. Load a control line file. After starting the generator,_before_ pressing `<space>`, press the `i` key. This will load a series of points from the file `mousepoints.json`. The points provided in the distributed `mousepoints.json` are the same points used in the control line examples in the paper.
+
