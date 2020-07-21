@@ -38,7 +38,7 @@ A thousand apologies, but this is quickly written research code which lacks obvi
 
 To change the number of rooms, at the top of the `dungeon-smt.py` file, change the constant `NUM_ROOMS`. As the number of rooms increases, it gets increasingly difficult for the Z3 solver to find a solution. Try small increments of 5 or 10 when you're first getting started, since determining that a solution isn't possible (determining unsat) can take a long time.
 
-**Altering Room Sizes***
+**Altering Room Sizes**
 
 Room sizes are determined by a span of widths and heights. These are controlled by the following constants, located at the top of `dungeon-smt.py`:
 
