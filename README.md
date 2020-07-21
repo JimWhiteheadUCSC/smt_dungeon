@@ -23,4 +23,4 @@ Follow directions for each package to install.
 
 `python3 dungeon-smt.py`
 
-This will cause a blank PyGame window to appear. Click inside the PyGame window so it receives keyboard events. Press <space> to begin dungeon execution. Statistics will be displayed to the console.
+This will cause a blank PyGame window to appear. Click inside the PyGame window so it receives keyboard events. Press `<space>` to begin dungeon execution. Statistics will be displayed to the console.
