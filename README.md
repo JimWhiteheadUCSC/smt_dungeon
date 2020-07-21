@@ -43,6 +43,7 @@ To change the number of rooms, at the top of the `dungeon-smt.py` file, change t
 Room sizes are determined by a span of widths and heights. These are controlled by the following constants, located at the top of `dungeon-smt.py`:
 
 *Width:* `ROOM_WIDTH_MIN` ... `ROOM_WIDTH_MAX`
+
 *Height:* `ROOM_HEIGHT_MIN` ... `ROOM_HEIGHT_MAX`
 
 Note that room heights have a scale factor element (e.g., `ROOM_HEIGHT_MIN = 20 * SCALE_FACTOR`). Only edit the `20`, and leave the `SCALE_FACTOR` alone. `SCALE_FACTOR` is used to get around the limitations of integer line slopes.
